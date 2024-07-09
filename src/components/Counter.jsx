@@ -1,24 +1,16 @@
-import React from "react";
-import { connect } from "react-redux";
+// penggunaan useState
 
-function Counter({counter,increment,decrement}){
+import React, { useState } from 'react';
 
-    return (
-        <div>
-            <p>Counter: {counter}</p>
-            <button onClick={increment}>Increment</button>
-            <button onClick={decrement}>Decrement</button>
-        </div>
-    );
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => ({
-    counter: state.counter,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-    increment: () => dispatch({ type: "increment" }),
-    decrement: () => dispatch({ type: "decrement" }),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Counter)
+export default Counter;
